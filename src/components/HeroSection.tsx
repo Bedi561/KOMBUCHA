@@ -103,8 +103,6 @@ const HeroSection = () => {
     damping: 50,
   });
 
-  const overlayOpacity = useTransform(scrollYProgress, [0, 0.5], [0, 0.15]);
-
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -124,22 +122,13 @@ const HeroSection = () => {
       <motion.div
         className="absolute inset-0 z-0"
         style={{
-          background: `linear-gradient(to bottom, hsl(var(--brand-honey) / 1) 0%, hsl(var(--brand-tan) / 1) 80%)`,
+          background: `linear-gradient(to bottom, hsl(var(--brand-honey)) 0%, hsl(var(--brand-tan)) 80%)`,
         }}
       />
 
       <LiquidWave scrollY={scrollY} />
 
-      {/* Subtle Overlay */}
-      <motion.div
-        className="absolute inset-0"
-        style={{
-          background: `linear-gradient(to bottom, transparent 0%, hsl(var(--brand-primary) / 0.2) 50%, hsl(var(--brand-shadow) / 0.2) 100%)`,
-          opacity: overlayOpacity,
-        }}
-      />
-
-      {/* Floating Accent Bubbles */}
+      {/* Floating Accent Bubbles (without blur or shadow) */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {Array.from({ length: 8 }).map((_, i) => {
           const colorVar =
@@ -168,9 +157,8 @@ const HeroSection = () => {
               <div
                 className="w-3 h-3 rounded-full"
                 style={{
-                  background: `hsl(var(${colorVar}) / 0.8)`,
+                  background: `hsl(var(${colorVar}))`,
                   transform: `translateY(${scrollY * (0.05 + i * 0.01)}px)`,
-                  boxShadow: `0 0 14px hsl(var(${colorVar}) / 0.5)`,
                 }}
               />
             </motion.div>
@@ -232,13 +220,13 @@ const HeroSection = () => {
             whileTap={{ scale: 0.95 }}
             className="group relative mt-12 px-10 py-5 rounded-full text-white font-semibold tracking-wide overflow-hidden transition-all duration-500"
             style={{
-              background: `linear-gradient(45deg, hsl(var(--brand-accent) / 1), hsl(var(--brand-honey) / 1))`,
+              background: `linear-gradient(45deg, hsl(var(--brand-accent)), hsl(var(--brand-honey)))`,
             }}
           >
             <motion.div
               className="absolute inset-0 opacity-0 group-hover:opacity-100"
               style={{
-                background: `linear-gradient(45deg, hsl(var(--brand-honey) / 1), hsl(var(--brand-accent) / 1))`,
+                background: `linear-gradient(45deg, hsl(var(--brand-honey)), hsl(var(--brand-accent)))`,
               }}
               animate={{
                 backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
@@ -260,38 +248,6 @@ const HeroSection = () => {
 
       {/* Wave Transition */}
       <ScrollWave />
-
-      {/* Bottom Fade */}
-      <motion.div
-        className="absolute bottom-0 left-0 w-full h-[40rem] z-30 pointer-events-none"
-        style={{
-          background: `linear-gradient(to bottom, transparent 0%, hsl(var(--brand-cream) / 0.9) 100%)`,
-          opacity: useTransform(scrollYProgress, [0, 0.3], [1, 0.7]),
-          y: useTransform(scrollYProgress, [0, 1], [0, 200]),
-        }}
-      />
-
-      {/* Bottom Floating White Dots */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none z-20">
-        {Array.from({ length: 8 }).map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-3 h-3 rounded-full mix-blend-soft-light bg-white/10"
-            style={{
-              left: `${10 + i * 12}%`,
-              top: `${20 + (i % 4) * 20}%`,
-            }}
-            animate={{
-              y: [0, -10, 0],
-            }}
-            transition={{
-              duration: 3 + i,
-              repeat: Infinity,
-              ease: 'easeInOut',
-            }}
-          />
-        ))}
-      </div>
     </section>
   );
 };
