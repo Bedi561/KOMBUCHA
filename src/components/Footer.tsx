@@ -17,14 +17,14 @@ const Footer = () => {
       style={{
         background: `linear-gradient(
           to top,
-          #EFD4A1 0%,
-          #FFD3A5 50%,
-          #FF8F48 100%
+          #FFF1E0 0%,
+          #FFCB95 40%,
+          #FF8A4C 100%
         )`,
       }}
     >
       {/* Decorative Bird Silhouette */}
-      <div className="absolute top-0 right-0 w-64 h-64 opacity-10 text-cream-50 pointer-events-none">
+      <div className="absolute top-0 right-0 w-64 h-64 opacity-10 text-[#450003] pointer-events-none">
         <svg viewBox="0 0 100 100" className="w-full h-full">
           <path
             d="M20,50 C20,30 35,20 50,25 C65,20 80,30 80,50 C75,60 65,65 50,60 C35,65 25,60 20,50 Z"
@@ -32,14 +32,14 @@ const Footer = () => {
           />
           <path
             d="M45,45 C45,42 47,40 50,40 C53,40 55,42 55,45 C55,48 53,50 50,50 C47,50 45,48 45,45 Z"
-            fill="#2f4f2f"
+            fill="#2f3e2f"
           />
         </svg>
       </div>
 
       <div className="relative z-10 max-w-3xl mx-auto px-4 text-center">
         <motion.h3
-          className="text-4xl md:text-5xl font-brand text-[#690010] mb-6"
+          className="text-4xl md:text-5xl font-brand text-[#4B0D0D] mb-6"
           style={{ fontFamily: 'Ortland, serif' }}
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
@@ -49,7 +49,7 @@ const Footer = () => {
         </motion.h3>
 
         <motion.p
-          className="text-lg text-[#9F1239] font-body mb-10"
+          className="text-lg text-[#7F1D1D] font-body mb-10"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
@@ -69,12 +69,12 @@ const Footer = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Enter your email"
-            className="w-full sm:w-auto px-6 py-4 rounded-lg bg-[#ffffff18] border border-[#ffffff30] text-[#690010] placeholder-[#9F1239] font-body focus:outline-none focus:border-[#FFD3A5] backdrop-blur-md shadow-inner"
+            className="w-full sm:w-auto px-6 py-4 rounded-lg bg-white/30 border border-white/50 text-[#4B0D0D] placeholder-[#7F1D1D] font-body focus:outline-none focus:ring-2 focus:ring-[#FFB57C] focus:border-none backdrop-blur-md shadow-inner transition-all duration-200"
             required
           />
           <button
             type="submit"
-            className="px-6 py-4 bg-[#FFD3A5] text-[#690010] font-semibold rounded-lg hover:bg-[#ffc98c] transition-colors duration-300 shadow-md"
+            className="px-6 py-4 bg-gradient-to-r from-[#FFB57C] to-[#FF8A4C] text-white font-semibold rounded-lg hover:from-[#FF9840] hover:to-[#FF6A1C] transition-colors duration-300 shadow-lg"
           >
             Subscribe
           </button>
